@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8AE6221EAB92010013D399 /* YKCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E8AE6211EAB92010013D399 /* YKCycleScrollView.m */; };
 		5C4299551EA9151500997585 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4299541EA9151500997585 /* main.m */; };
 		5C4299581EA9151500997585 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4299571EA9151500997585 /* AppDelegate.m */; };
 		5C42995B1EA9151500997585 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C42995A1EA9151500997585 /* ViewController.m */; };
 		5C42995E1EA9151500997585 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C42995C1EA9151500997585 /* Main.storyboard */; };
 		5C4299601EA9151500997585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C42995F1EA9151500997585 /* Assets.xcassets */; };
 		5C4299631EA9151500997585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4299611EA9151500997585 /* LaunchScreen.storyboard */; };
+		9083A77B0A1AB0165A240AA3 /* libPods-YKScroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8AE6201EAB92010013D399 /* YKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCycleScrollView.h; sourceTree = "<group>"; };
+		0E8AE6211EAB92010013D399 /* YKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCycleScrollView.m; sourceTree = "<group>"; };
+		38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.release.xcconfig"; sourceTree = "<group>"; };
 		5C4299501EA9151500997585 /* YKScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4299541EA9151500997585 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C4299561EA9151500997585 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +31,8 @@
 		5C42995F1EA9151500997585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C4299621EA9151500997585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C4299641EA9151500997585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YKScroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9083A77B0A1AB0165A240AA3 /* libPods-YKScroll.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +52,8 @@
 			children = (
 				5C4299521EA9151500997585 /* YKScroll */,
 				5C4299511EA9151500997585 /* Products */,
+				9B47502DEDB81F839E5BF12B /* Pods */,
+				C8F6EA3B6EA6A3FBB4D29B18 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +70,8 @@
 			children = (
 				5C4299561EA9151500997585 /* AppDelegate.h */,
 				5C4299571EA9151500997585 /* AppDelegate.m */,
+				0E8AE6201EAB92010013D399 /* YKCycleScrollView.h */,
+				0E8AE6211EAB92010013D399 /* YKCycleScrollView.m */,
 				5C4299591EA9151500997585 /* ViewController.h */,
 				5C42995A1EA9151500997585 /* ViewController.m */,
 				5C42995C1EA9151500997585 /* Main.storyboard */,
@@ -79,6 +91,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9B47502DEDB81F839E5BF12B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */,
+				38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C8F6EA3B6EA6A3FBB4D29B18 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C4299671EA9151500997585 /* Build configuration list for PBXNativeTarget "YKScroll" */;
 			buildPhases = (
+				AC8B68DB78B8FEE811E24A73 /* [CP] Check Pods Manifest.lock */,
 				5C42994C1EA9151500997585 /* Sources */,
 				5C42994D1EA9151500997585 /* Frameworks */,
 				5C42994E1EA9151500997585 /* Resources */,
+				7BAE78A00A9601EC3B94342E /* [CP] Embed Pods Frameworks */,
+				F7D3457267AB03F3C7C40D12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -145,11 +177,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7BAE78A00A9601EC3B94342E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC8B68DB78B8FEE811E24A73 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F7D3457267AB03F3C7C40D12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C42994C1EA9151500997585 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E8AE6221EAB92010013D399 /* YKCycleScrollView.m in Sources */,
 				5C42995B1EA9151500997585 /* ViewController.m in Sources */,
 				5C4299581EA9151500997585 /* AppDelegate.m in Sources */,
 				5C4299551EA9151500997585 /* main.m in Sources */,
@@ -272,6 +353,7 @@
 		};
 		5C4299681EA9151500997585 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YKScroll/Info.plist;
@@ -283,6 +365,7 @@
 		};
 		5C4299691EA9151500997585 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = YKScroll/Info.plist;
@@ -311,6 +394,7 @@
 				5C4299691EA9151500997585 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

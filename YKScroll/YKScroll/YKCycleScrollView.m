@@ -9,166 +9,211 @@
 #import "YKCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 
+#pragma mark - YTPageControl
 
-#pragma mark - pageControl方法
-//点的宽度和间隙
-CGFloat const pointWidth = 7;
-CGFloat const pointMargin = 7;
+#define Page_Tag 100
 
-@interface YKPageControlView()
+@interface YTPageControl(){
+    
+    //存放分页对应的子视图的容器
+    UIView * _contentView;
+}
 
-//被选中需要显示的图形
-@property (nonatomic, weak) UIView *selectedRoundView;
+/**
+ 当前被选中的分页
+ */
+@property (nonatomic, weak) UIView * currentSelectedPageView;
 
-//选点的初始位置 计算保存
-@property (nonatomic, assign) CGFloat roundStartX;
+
+
+
+/**
+ 分页的宽度
+ */
+@property (nonatomic, assign) CGFloat pageWidth;
+
+/**
+ 分页的高度
+ */
+@property (nonatomic, assign) CGFloat pageHeight;
+/**
+ 分页与分页之间的间距
+ */
+@property (nonatomic, assign) CGFloat margin;
+
+/**
+ 圆角大小
+ */
+@property (nonatomic, assign) CGFloat corner;
 
 
 @end
 
+@implementation YTPageControl
 
-@implementation YKPageControlView
-
-
+#pragma mark - 在构造方法中初始化
 - (instancetype)initWithFrame:(CGRect)frame{
+    
     if (self = [super initWithFrame:frame]) {
-        
-        
-        //圆点的高度是
-        //颜色初始值 可以后边修改
-        self.currentPageIndicatorTintColor = [UIColor whiteColor];
-        self.pageIndicatorTintColor = [UIColor grayColor];
-        self.userInteractionEnabled = NO;
-        
-        
-        //初始选中为第一个
-        self.currentPage = 0;
-        
+        _normalColor = [UIColor colorWithWhite:1 alpha:0.3];
+        _selectedColor = [UIColor whiteColor];
+        [self p_initialize];
     }
+    
     return self;
 }
 
+- (void)p_initialize{
 
-- (void)setNumberOfPages:(NSInteger)numberOfPages
-{
+    _pageWidth = 8;
+    _pageHeight = 8;
+    _margin = 10;
+    _corner = _pageHeight/2;
+}
+
+#pragma mark -- 创建每个分页对应的子视图
+- (void)setNumberOfPages:(NSInteger)numberOfPages{
     _numberOfPages = numberOfPages;
     
-#warning 以后处理
-    //创建子视图 只创建一次 但是如果多次设置就有问题--以后处理
-    [self createPointViews];
-    
-    
-}
-
-- (void)createPointViews{
-    //最后一个是选中view
-    for (int i = 0; i <= self.numberOfPages; i++) {
-        UIView *roundView = [[UIView alloc] init];
-        roundView.backgroundColor = self.pageIndicatorTintColor;
-        [self addSubview:roundView];
+    //移除原来创建的所有子视图
+    for (UIView * subView in self.subviews) {
+        
+        [subView removeFromSuperview];
     }
     
-    self.selectedRoundView = self.subviews.lastObject;
-}
-
-
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    
-    
-    
-    
-    //圆点宽度
-    CGFloat roundWidth = self.numberOfPages * (pointWidth + pointMargin) - pointMargin;
-    CGFloat roundY = (CGRectGetHeight(self.bounds) - pointWidth)/2;
-    
-    CGFloat roundStartX = (CGRectGetWidth(self.bounds) - roundWidth)/2;
-    self.roundStartX = roundStartX;
-    //0的时候测试
-    
-    for (int i = 0; i <= self.numberOfPages; i++) {
+    //根据分页数创建对应的视图
+    _contentView = [UIView new];
+    [self addSubview:_contentView];
+    for (int i = 0; i < numberOfPages; i++) {
         
-        UIView *roundView = self.subviews[i];
+        UIView * pageSubView = [UIView new];
+        pageSubView.tag = Page_Tag + i;     //设置tag，方便后边获取
+        [_contentView addSubview:pageSubView];
         
-        roundView.frame = CGRectMake(roundStartX+i * (pointWidth + pointMargin), roundY, pointWidth, pointWidth);
-        
-        roundView.backgroundColor = self.pageIndicatorTintColor;
-        
-        //最后一个添加到 最开始的第一个
-        self.selectedRoundView.frame = CGRectMake(roundStartX,  roundY, pointWidth, pointWidth);
-        self.selectedRoundView.backgroundColor = self.currentPageIndicatorTintColor;
+        //默认第一个处于选中状态
+        if (i == 0) {
+            
+            self.currentSelectedPageView = pageSubView;
+        }
     }
     
-    
-    //有frame之后才有style
-    [self updatePointStyle];
-    
 }
 
-//设置当前选中点
-- (void)setCurrentPage:(NSInteger)currentPage
-{
+#pragma mark -- 计算frame
+- (void)layoutSubviews{
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self setSubViewFrames];
+    });
+}
+
+- (void)setSubViewFrames{
+    
+    //1.设置分页子视图
+    CGFloat x = 0;
+    CGFloat y = self.frame.size.height / 2 - _pageHeight/2;
+    
+    int i = 0;
+    for (UIView * subView in _contentView.subviews) {
+        //设置frame
+        x = _margin + (_margin + _pageWidth) * i;
+        subView.frame = CGRectMake(x, y, _pageWidth, _pageHeight);
+        //设置颜色
+        subView.backgroundColor = _normalColor;
+        //切圆角
+        subView.layer.cornerRadius = _corner;
+        
+        i += 1;
+    }
+    
+    //选中的分页设置成选中颜色
+    _currentSelectedPageView.backgroundColor = _selectedColor;
+    
+    //2.设置容器视图
+    CGFloat contentX = 0;
+    CGFloat contentY = 0;
+    CGFloat contentW = _margin + (_margin + _pageWidth) * self.numberOfPages;
+    CGFloat contentH = self.frame.size.height;
+    _contentView.frame = CGRectMake(contentX, contentY, contentW, contentH);
+    _contentView.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+}
+
+#pragma mark -- 切换分页
+- (void)setCurrentPage:(NSInteger)currentPage{
+    
     _currentPage = currentPage;
     
-    //移动的x是多少呢？？
-    CGRect frame = self.selectedRoundView.frame;
-    
-    //currentPage 是在循环移动的 0 - 1 -2 -3 -4 -- 0
-    if (_currentPage < 0) {
-        _currentPage = self.numberOfPages + (_currentPage%self.numberOfPages);
-    } else if (_currentPage > 0) {
-        _currentPage = (_currentPage%self.numberOfPages);
-    } else if (_currentPage == 0) {
-        _currentPage = 0;
+    UIView * subView = [_contentView viewWithTag:Page_Tag + currentPage];
+    if (subView != _currentSelectedPageView) {
+        
+        _currentSelectedPageView.backgroundColor = _normalColor;
+        subView.backgroundColor = _selectedColor;
+        _currentSelectedPageView = subView;
     }
     
-    CGFloat moveToX = _currentPage * (pointWidth + pointMargin);//宽度 加间隙
-    NSLog(@"最新的位置%zd", self.currentPage);
-    self.selectedRoundView.frame = CGRectMake(self.roundStartX + moveToX, frame.origin.y, frame.size.width, frame.size.height);
 }
 
-
-- (void)updatePointStyle{
+#pragma mark -- 不同的风格
+- (void)setPointStyle:(YTPageControlPointStyle)pointStyle{
     
-    //圆角优化
-    if (self.pointStyle == YKPageControlPointStyleDefault) {
-       
-        for (UIView *pointView in self.subviews) {
-            pointView.layer.masksToBounds = YES;
-            pointView.layer.cornerRadius = CGRectGetWidth(pointView.bounds)/2;
+    _pointStyle = pointStyle;
+    
+    switch (pointStyle) {
+        case YTPageControlPointStyleDefault:{
+            [self p_initialize];
+            break;
+        }
+        case YTPageControlPointStyleSquare:{
+            _pageWidth = 8;
+            _pageHeight = 8;
+            _margin = 10;
+            _corner = 0;
             
+            break;
+        }
+        case YTPageControlPointStyleRectangle:{
+            _pageWidth = 16;
+            _pageHeight = 2;
+            _margin = 5;
+            _corner = 0;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
+}
+
+#pragma mark -- 点击切换
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    CGPoint point = [touches.anyObject locationInView:self];
+    
+    NSInteger tPage = 0;
+    if (point.x < self.frame.size.width/2) {
+        
+        tPage = _currentPage - 1;
+        if (tPage < 0) {
+            
+            tPage = 0;
         }
         
-    } else if(self.pointStyle == YKPageControlPointStyleSquare){
+        self.currentPage = tPage;
         
-        return;
-    }
-    
-}
-
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    //点击结束判断点了左边还是右边
-    UITouch *touch = touches.anyObject;
-    CGPoint point =  [touch locationInView:self];
-    
-    CGFloat W = CGRectGetWidth(self.bounds);
-    
-    //点击左右， 控制current选中的移动 - 刷新移动
-    if (point.x > W/2) {
-        self.currentPage += 1;
-        NSLog(@"点击了右边%zd", _currentPage);
+    }else{
         
-    } else {
-        self.currentPage -= 1;
-        NSLog(@"点击了左边");
+        tPage = _currentPage + 1;
+        if (tPage >= self.numberOfPages) {
+            
+            tPage = self.numberOfPages - 1;
+        }
+        
+        self.currentPage = tPage;
+        
     }
 }
-
-
 
 
 @end
@@ -254,7 +299,7 @@ CGFloat const pointMargin = 7;
         
         // 创建page保存 在这里可以用枚举让用户选择自己的pageControl
         //开始的时候就创建了pageControl
-        YKPageControlView *pageControl = [[YKPageControlView alloc] init];
+        YTPageControl *pageControl = [[YTPageControl alloc] init];
 
         [self addSubview:pageControl];
         

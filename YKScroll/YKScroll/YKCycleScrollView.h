@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class YTPageControl;
 @class YKPageControlView;
 
 @class YKCycleScrollView;
@@ -53,7 +54,7 @@
 
 // 内部使用的是系统默认的pageControll属性 如有需要 自行设置
 //@property (nonatomic ,weak) YKPageControlView *scrollPage;
-@property (nonatomic ,weak) YKPageControlView *pageControl;
+@property (nonatomic ,weak) YTPageControl *pageControl;
 
 // 代理
 @property (nonatomic ,weak) id <YKCycleScrollViewDelegate> delegate;
@@ -70,38 +71,48 @@ typedef NS_ENUM(NSInteger, YKPageControlPointStyle) {
 @end
 
 
-#pragma mark - pageControl部分
 
-@interface YKPageControlView : UIView
+
+#pragma mark - YTPageControl
+/**
+ 点的样式
+ */
+typedef NS_ENUM(NSInteger, YTPageControlPointStyle) {
+    YTPageControlPointStyleDefault,     //默认是圆形样式
+    YTPageControlPointStyleSquare,      //正方形样式
+    YTPageControlPointStyleRectangle    //长方形样式
+};
+
+@interface YTPageControl : UIView
+
+
 
 /**
- 显示的总个数
+ 正常状态的颜色
  */
-@property (nonatomic, assign) NSInteger numberOfPages;//默认值为0
+@property (nonatomic, strong) UIColor * normalColor;
+
+/**
+ 选中颜色
+ */
+@property (nonatomic, strong) UIColor  * selectedColor;
+
+/**
+ 分页总数
+ */
+@property (nonatomic, assign) NSInteger numberOfPages;
 
 
 /**
- 当前选中的page, 当选中时候被选中的点不一样
+ 当前选中的分页
  */
-@property (nonatomic, assign) NSInteger currentPage;//默认值为0
+@property (nonatomic, assign) NSInteger  currentPage;
 
 
 /**
- 点样式
+ page样式
  */
-@property (nonatomic, assign) YKPageControlPointStyle pointStyle;
-
-/**
- 选中点颜色
- */
-@property (nonatomic, strong) UIColor *currentPageIndicatorTintColor;
-
-/**
- 非选中点颜色
- */
-@property (nonatomic, strong) UIColor *pageIndicatorTintColor;
-
+@property (nonatomic, assign) YTPageControlPointStyle pointStyle;
 
 @end
-
 

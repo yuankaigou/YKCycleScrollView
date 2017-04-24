@@ -8,6 +8,11 @@
 
 	- Just create Three ImageView object to display the images
 	- when you see the middle imageView the 2 images preload
+	- You can set the animation time easy
+
+	
+![](http://7xr4z1.com1.z0.glb.clouddn.com/Untitled.gif)
+
 
 ### Requirements
 

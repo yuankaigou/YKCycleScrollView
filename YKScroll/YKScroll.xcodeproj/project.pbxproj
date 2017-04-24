@@ -14,13 +14,14 @@
 		5C42995E1EA9151500997585 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C42995C1EA9151500997585 /* Main.storyboard */; };
 		5C4299601EA9151500997585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C42995F1EA9151500997585 /* Assets.xcassets */; };
 		5C4299631EA9151500997585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4299611EA9151500997585 /* LaunchScreen.storyboard */; };
-		9083A77B0A1AB0165A240AA3 /* libPods-YKScroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */; };
+		BAF1902A4222925B5C211D2A /* libPods-YKScroll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D5B6A9E66326DA53234406 /* libPods-YKScroll.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E8AE6201EAB92010013D399 /* YKCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCycleScrollView.h; sourceTree = "<group>"; };
 		0E8AE6211EAB92010013D399 /* YKCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCycleScrollView.m; sourceTree = "<group>"; };
-		38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.release.xcconfig"; sourceTree = "<group>"; };
+		27050F562EF79B7561E95848 /* Pods-YKScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.debug.xcconfig"; sourceTree = "<group>"; };
+		31D5B6A9E66326DA53234406 /* libPods-YKScroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YKScroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4299501EA9151500997585 /* YKScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YKScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C4299541EA9151500997585 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C4299561EA9151500997585 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,8 +32,7 @@
 		5C42995F1EA9151500997585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C4299621EA9151500997585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C4299641EA9151500997585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YKScroll.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.debug.xcconfig"; sourceTree = "<group>"; };
+		CDD23227FA3ECFE3EE8F4F91 /* Pods-YKScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YKScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-YKScroll/Pods-YKScroll.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,20 +40,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9083A77B0A1AB0165A240AA3 /* libPods-YKScroll.a in Frameworks */,
+				BAF1902A4222925B5C211D2A /* libPods-YKScroll.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12D4759F9527709B7604D06B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27050F562EF79B7561E95848 /* Pods-YKScroll.debug.xcconfig */,
+				CDD23227FA3ECFE3EE8F4F91 /* Pods-YKScroll.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2CD6FBC46D427712096317B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31D5B6A9E66326DA53234406 /* libPods-YKScroll.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5C4299471EA9151500997585 = {
 			isa = PBXGroup;
 			children = (
 				5C4299521EA9151500997585 /* YKScroll */,
 				5C4299511EA9151500997585 /* Products */,
-				9B47502DEDB81F839E5BF12B /* Pods */,
-				C8F6EA3B6EA6A3FBB4D29B18 /* Frameworks */,
+				12D4759F9527709B7604D06B /* Pods */,
+				2CD6FBC46D427712096317B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,23 +108,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B47502DEDB81F839E5BF12B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */,
-				38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		C8F6EA3B6EA6A3FBB4D29B18 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				792335BEFF6F8A1E8EA8C33B /* libPods-YKScroll.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +142,7 @@
 				TargetAttributes = {
 					5C42994F1EA9151500997585 = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 2U8ZEH74GH;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -353,9 +354,10 @@
 		};
 		5C4299681EA9151500997585 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94EEC12626BBCCCC19A0F5DC /* Pods-YKScroll.debug.xcconfig */;
+			baseConfigurationReference = 27050F562EF79B7561E95848 /* Pods-YKScroll.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2U8ZEH74GH;
 				INFOPLIST_FILE = YKScroll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NV.YKScroll;
@@ -365,9 +367,10 @@
 		};
 		5C4299691EA9151500997585 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38980DE3827A01B48A825075 /* Pods-YKScroll.release.xcconfig */;
+			baseConfigurationReference = CDD23227FA3ECFE3EE8F4F91 /* Pods-YKScroll.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2U8ZEH74GH;
 				INFOPLIST_FILE = YKScroll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NV.YKScroll;
